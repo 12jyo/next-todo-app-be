@@ -33,4 +33,15 @@ module.exports = app => {
       message: "todo saved!"
     });
   })
+
+  app.delete("/:id", async(req,res) => {
+    await todoModel.deleteOne({
+      id: req.params.id
+    });
+
+    return res.json({
+      success: true,
+      message: "todo deleted!"
+    })
+  })
 };
